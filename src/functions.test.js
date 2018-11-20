@@ -222,7 +222,17 @@ const filterYourself = numberArray => {
  */
 
 const everyYourself = numberArray => {
-  for (let index = 0; index < numberArray.length; index++) {}
+  let evenNumberArray = []
+  for (let index = 0; index < numberArray.length; index++) {
+    if (numberArray[index] % 2 === 0) {
+      evenNumberArray.push(numberArray[index])
+    }
+  }
+  if (evenNumberArray.length === numberArray.length) {
+    return true
+  } else {
+    return false
+  }
 }
 
 /**
