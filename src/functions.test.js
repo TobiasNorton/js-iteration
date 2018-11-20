@@ -126,7 +126,9 @@ const bestMoviesOfTheYear = (arrayOfMovieObjects, year) => {
   let filteredMovieObjects = arrayOfMovieObjects.filter(
     movieObject => movieObject.year === year && movieObject.score > 90
   )
+
   let movieTitles = filteredMovieObjects.map(movieObject => movieObject.name)
+
   return movieTitles
 }
 
@@ -183,8 +185,8 @@ const someoneToLove = stringArray => {
 
 const mapYourself = numberArray => {
   let doubledArray = []
-  for (let i = 0; i < numberArray.length; i++) {
-    doubledArray.push(numberArray[i] * 2)
+  for (let index = 0; index < numberArray.length; index++) {
+    doubledArray.push(numberArray[index] * 2)
   }
   return doubledArray
 }
@@ -200,13 +202,13 @@ const mapYourself = numberArray => {
  */
 
 const filterYourself = numberArray => {
-  let doubledArray = []
-  for (let i = 0; i < numberArray.length; i++) {
-    if (numberArray[i] % 2 === 0) {
-      doubledArray.push(numberArray[i])
+  let evenNumberArray = []
+  for (let index = 0; index < numberArray.length; index++) {
+    if (numberArray[index] % 2 === 0) {
+      evenNumberArray.push(numberArray[index])
     }
   }
-  return doubledArray
+  return evenNumberArray
 }
 
 /*
@@ -219,7 +221,9 @@ const filterYourself = numberArray => {
  * So no using forEach, map, filter, reduce, etc.
  */
 
-// ...
+const everyYourself = numberArray => {
+  for (let index = 0; index < numberArray.length; index++) {}
+}
 
 /**
  * NOTE: Don't modify anything below this line...
