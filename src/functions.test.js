@@ -63,7 +63,12 @@
  * }
  */
 
-// ...
+const yelling = array => {
+  let upperCaseStrings = array.map(word => {
+    return word.toUpperCase()
+  })
+  return upperCaseStrings
+}
 
 /**
  *
@@ -72,7 +77,7 @@
  * the numbers multiplied by 2
  */
 
-// ...
+const doubleTrouble = arrayOfNumbers => arrayOfNumbers.map(number => number * 2)
 
 /*
  * Define a function stringyIndexes() that takes an array of
@@ -80,21 +85,28 @@
  * suffixed with " is at index X" where X is the index of the element
  */
 
-// ...
+const stringyIndexes = arrayOfStrings =>
+  arrayOfStrings.map((string, index) => `${string} is at index ${index}`)
 
 /*
  * Define a function onlyTheEvenSurvive that accepts an array of
  * numbers and returns only the elements that are even
  */
 
-// ...
+const onlyTheEvenSurvive = arrayOfNumbers => arrayOfNumbers.filter(number => number % 2 === 0)
 
 /*
  * Define a function onlyTheEvenIndexedSurvive that accepts an array of
  * numbers and returns only the elements at indexes that are even
  */
 
-// ...
+const onlyTheEvenIndexedSurvive = arrayOfNumbers => {
+  return arrayOfNumbers.filter((number, index) => {
+    if (index % 2 === 0) {
+      return number
+    }
+  })
+}
 
 /*
  * Define a function bestMoviesOfTheYear that accepts an array of
@@ -110,7 +122,13 @@
  * }
  */
 
-// ...
+const bestMoviesOfTheYear = (arrayOfMovieObjects, year) => {
+  let filteredMovieObjects = arrayOfMovieObjects.filter(
+    movieObject => movieObject.year === year && movieObject.score > 90
+  )
+  let movieTitles = filteredMovieObjects.map(movieObject => movieObject.name)
+  return movieTitles
+}
 
 /*
  * Define a function everyoneIsOdd that accepts an array of
@@ -118,7 +136,7 @@
  * odd.
  */
 
-// ...
+const everyoneIsOdd = arrayOfNumbers => arrayOfNumbers.every(number => number % 2 === 1)
 
 /*
  * Define a function findTheNeedle that accepts an array of
@@ -126,7 +144,12 @@
  * `needle` inside
  */
 
-// ...
+const findTheNeedle = arrayOfStrings => {
+  let stringWithNeedle = arrayOfStrings.filter(string => {
+    return string.includes('needle')
+  })
+  return stringWithNeedle[0]
+}
 
 /*
  * Define a function findTheNeedleIndex that accepts an array of
@@ -134,7 +157,8 @@
  *  the word `needle` inside
  */
 
-// ...
+const findTheNeedleIndex = arrayOfStrings =>
+  arrayOfStrings.findIndex(string => string.includes('needle'))
 
 /*
  * Define a function someoneToLove that accepts an array of
@@ -142,7 +166,11 @@
  * four characters long
  */
 
-// ...
+const someoneToLove = stringArray => {
+  return stringArray.some(string => {
+    return string.length === 4
+  })
+}
 
 /*
  * Define a function mapYourself that accepts an array of
@@ -153,7 +181,13 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
-// ...
+const mapYourself = numberArray => {
+  let doubledArray = []
+  for (let i = 0; i < numberArray.length; i++) {
+    doubledArray.push(numberArray[i] * 2)
+  }
+  return doubledArray
+}
 
 /*
  * Define a function filterYourself that accepts an
@@ -165,7 +199,15 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
-// ...
+const filterYourself = numberArray => {
+  let doubledArray = []
+  for (let i = 0; i < numberArray.length; i++) {
+    if (numberArray[i] % 2 === 0) {
+      doubledArray.push(numberArray[i])
+    }
+  }
+  return doubledArray
+}
 
 /*
  * Define a function everyYourself that accepts an
@@ -188,12 +230,7 @@
 import test from 'ava'
 
 test('yelling()', t => {
-  t.deepEqual(yelling(['now', 'is', 'the', 'time']), [
-    'NOW',
-    'IS',
-    'THE',
-    'TIME'
-  ])
+  t.deepEqual(yelling(['now', 'is', 'the', 'time']), ['NOW', 'IS', 'THE', 'TIME'])
 })
 
 test('doubleTrouble()', t => {
@@ -210,12 +247,7 @@ test('stringyIndexes', t => {
 })
 
 test('onlyTheEvenSurvive', t => {
-  t.deepEqual(onlyTheEvenSurvive([42, 50, 100, 5, -43, 17, 44]), [
-    42,
-    50,
-    100,
-    44
-  ])
+  t.deepEqual(onlyTheEvenSurvive([42, 50, 100, 5, -43, 17, 44]), [42, 50, 100, 44])
 })
 
 test('onlyTheEvenIndexedSurvive', t => {
@@ -263,29 +295,7 @@ test('onlyTheEvenIndexedSurvive', t => {
       22,
       72
     ]),
-    [
-      31,
-      64,
-      14,
-      43,
-      48,
-      58,
-      64,
-      98,
-      69,
-      5,
-      29,
-      28,
-      86,
-      20,
-      35,
-      85,
-      65,
-      56,
-      93,
-      29,
-      72
-    ]
+    [31, 64, 14, 43, 48, 58, 64, 98, 69, 5, 29, 28, 86, 20, 35, 85, 65, 56, 93, 29, 72]
   )
 })
 
@@ -301,10 +311,7 @@ test('bestMoviesOfTheYear', t => {
     { name: 'The Big Sick', year: 2017, score: 98 }
   ]
 
-  t.deepEqual(bestMoviesOfTheYear(movies, 2014), [
-    'The Grand Budapest Hotel',
-    'Birdman'
-  ])
+  t.deepEqual(bestMoviesOfTheYear(movies, 2014), ['The Grand Budapest Hotel', 'Birdman'])
 
   t.deepEqual(bestMoviesOfTheYear(movies, 2017), ['Get Out', 'The Big Sick'])
 
@@ -324,10 +331,7 @@ test('findTheNeedle', t => {
 })
 
 test('findTheNeedleIndex', t => {
-  t.is(
-    findTheNeedleIndex(['one', 'time', 'there was a needle at', 'the market']),
-    2
-  )
+  t.is(findTheNeedleIndex(['one', 'time', 'there was a needle at', 'the market']), 2)
 })
 
 test('someoneToLove()', t => {
