@@ -123,11 +123,13 @@ const onlyTheEvenIndexedSurvive = arrayOfNumbers => {
  */
 
 const bestMoviesOfTheYear = (arrayOfMovieObjects, year) => {
-  let filteredMovieObjects = arrayOfMovieObjects.filter(
-    movieObject => movieObject.year === year && movieObject.score > 90
-  )
+  let filteredMovieObjects = arrayOfMovieObjects.filter(movieObject => {
+    return movieObject.year === year && movieObject.score > 90
+  })
 
-  let movieTitles = filteredMovieObjects.map(movieObject => movieObject.name)
+  let movieTitles = filteredMovieObjects.map(movieObject => {
+    return movieObject.name
+  })
 
   return movieTitles
 }
