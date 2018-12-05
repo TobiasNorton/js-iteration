@@ -63,12 +63,7 @@
  * }
  */
 
-const yelling = array => {
-  let upperCaseStrings = array.map(word => {
-    return word.toUpperCase()
-  })
-  return upperCaseStrings
-}
+const yelling = array => array.map(string => string.toUpperCase())
 
 /**
  *
@@ -77,7 +72,7 @@ const yelling = array => {
  * the numbers multiplied by 2
  */
 
-const doubleTrouble = arrayOfNumbers => arrayOfNumbers.map(number => number * 2)
+const doubleTrouble = array => array.map(number => number * 2)
 
 /*
  * Define a function stringyIndexes() that takes an array of
@@ -85,27 +80,26 @@ const doubleTrouble = arrayOfNumbers => arrayOfNumbers.map(number => number * 2)
  * suffixed with " is at index X" where X is the index of the element
  */
 
-const stringyIndexes = arrayOfStrings =>
-  arrayOfStrings.map((string, index) => `${string} is at index ${index}`)
+const stringyIndexes = strings => {
+  return strings.map((string, index) => `${string} is at index ${index}`)
+}
 
 /*
  * Define a function onlyTheEvenSurvive that accepts an array of
  * numbers and returns only the elements that are even
  */
 
-const onlyTheEvenSurvive = arrayOfNumbers => arrayOfNumbers.filter(number => number % 2 === 0)
+const onlyTheEvenSurvive = array => {
+  return array.filter(number => number % 2 === 0)
+}
 
 /*
  * Define a function onlyTheEvenIndexedSurvive that accepts an array of
  * numbers and returns only the elements at indexes that are even
  */
 
-const onlyTheEvenIndexedSurvive = arrayOfNumbers => {
-  return arrayOfNumbers.filter((number, index) => {
-    if (index % 2 === 0) {
-      return number
-    }
-  })
+const onlyTheEvenIndexedSurvive = array => {
+  return array.filter((number, index) => index % 2 === 0)
 }
 
 /*
@@ -122,16 +116,11 @@ const onlyTheEvenIndexedSurvive = arrayOfNumbers => {
  * }
  */
 
-const bestMoviesOfTheYear = (arrayOfMovieObjects, year) => {
-  let filteredMovieObjects = arrayOfMovieObjects.filter(movieObject => {
+const bestMoviesOfTheYear = (movieObjects, year) => {
+  let filteredMovies = movieObjects.filter(movieObject => {
     return movieObject.year === year && movieObject.score > 90
   })
-
-  let movieTitles = filteredMovieObjects.map(movieObject => {
-    return movieObject.name
-  })
-
-  return movieTitles
+  return filteredMovies.map(movie => movie.name)
 }
 
 /*
@@ -140,7 +129,9 @@ const bestMoviesOfTheYear = (arrayOfMovieObjects, year) => {
  * odd.
  */
 
-const everyoneIsOdd = arrayOfNumbers => arrayOfNumbers.every(number => number % 2 === 1)
+const everyoneIsOdd = arrayOfNumbers => {
+  return arrayOfNumbers.every(number => number % 2 === 1)
+}
 
 /*
  * Define a function findTheNeedle that accepts an array of
@@ -148,12 +139,7 @@ const everyoneIsOdd = arrayOfNumbers => arrayOfNumbers.every(number => number % 
  * `needle` inside
  */
 
-const findTheNeedle = arrayOfStrings => {
-  let stringWithNeedle = arrayOfStrings.filter(string => {
-    return string.includes('needle')
-  })
-  return stringWithNeedle[0]
-}
+const findTheNeedle = array => array.find(string => string.includes('needle'))
 
 /*
  * Define a function findTheNeedleIndex that accepts an array of
@@ -161,8 +147,11 @@ const findTheNeedle = arrayOfStrings => {
  *  the word `needle` inside
  */
 
-const findTheNeedleIndex = arrayOfStrings =>
-  arrayOfStrings.findIndex(string => string.includes('needle'))
+const findTheNeedleIndex = array => {
+  return array.findIndex(string => {
+    return string.includes('needle')
+  })
+}
 
 /*
  * Define a function someoneToLove that accepts an array of
@@ -170,10 +159,8 @@ const findTheNeedleIndex = arrayOfStrings =>
  * four characters long
  */
 
-const someoneToLove = stringArray => {
-  return stringArray.some(string => {
-    return string.length === 4
-  })
+const someoneToLove = array => {
+  return array.some(string => string.length === 4)
 }
 
 /*
@@ -185,12 +172,12 @@ const someoneToLove = stringArray => {
  * So no using forEach, map, filter, reduce, etc.
  */
 
-const mapYourself = numberArray => {
-  let doubledArray = []
-  for (let index = 0; index < numberArray.length; index++) {
-    doubledArray.push(numberArray[index] * 2)
+const mapYourself = array => {
+  let doubledNumbers = []
+  for (let number = 0; number < array.length; number++) {
+    doubledNumbers.push(array[number] * 2)
   }
-  return doubledArray
+  return doubledNumbers
 }
 
 /*
@@ -203,14 +190,14 @@ const mapYourself = numberArray => {
  * So no using forEach, map, filter, reduce, etc.
  */
 
-const filterYourself = numberArray => {
-  let evenNumberArray = []
-  for (let index = 0; index < numberArray.length; index++) {
-    if (numberArray[index] % 2 === 0) {
-      evenNumberArray.push(numberArray[index])
+const filterYourself = array => {
+  let evenNumbers = []
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      evenNumbers.push(array[i])
     }
   }
-  return evenNumberArray
+  return evenNumbers
 }
 
 /*
@@ -223,18 +210,14 @@ const filterYourself = numberArray => {
  * So no using forEach, map, filter, reduce, etc.
  */
 
-const everyYourself = numberArray => {
-  let evenNumberArray = []
-  for (let index = 0; index < numberArray.length; index++) {
-    if (numberArray[index] % 2 === 0) {
-      evenNumberArray.push(numberArray[index])
+const everyYourself = array => {
+  let evenNumbers = []
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      evenNumbers.push(array[i])
     }
   }
-  if (evenNumberArray.length === numberArray.length) {
-    return true
-  } else {
-    return false
-  }
+  return evenNumbers.length === array.length
 }
 
 /**
